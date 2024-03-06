@@ -1,21 +1,35 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
-#include <QMainWindow>
-
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow
+#ifndef mainwindow_h
+#define mainwindow_h
+#include <QtGui>
+#include <QFrame>
+#include <QLineedit>
+#include <Qlabel>
+#include <QPushButton>
+class mainwindow:public QWidget
 {
     Q_OBJECT
-
+protected:
+    QTextCodec *codec;
+    QFrame *frame;
+    QLabel *inputLabel;
+    QLineEdit *inputEdit;
+    QLabel *outputLabel;
+    QLineEdit *outputEdit;
+    QPushButton *nextButton;
+    QPushButton *exitButton;
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-
-private:
-    Ui::MainWindow *ui;
+    mainwindow(QWidget *parent = 0);
+public slots:
+    void begin();
+    void calc();
 };
-#endif // MAINWINDOW_H
+class StrValidator:public QValidator
+{
+public:
+    StrValidator(QObject *parent):QValidator(parent){}
+    virtual State validate(QString &str,int &pos)const
+    {
+        return Acceptable;
+    }
+};
+#endif
