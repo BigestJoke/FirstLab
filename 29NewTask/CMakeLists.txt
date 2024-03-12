@@ -17,6 +17,10 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        area.cpp
+        area.h
+        figura.cpp
+        figura.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
